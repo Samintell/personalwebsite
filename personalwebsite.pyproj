@@ -38,6 +38,14 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="kbdyndemo\admin.py" />
+    <Compile Include="kbdyndemo\apps.py" />
+    <Compile Include="kbdyndemo\migrations\__init__.py" />
+    <Compile Include="kbdyndemo\models.py" />
+    <Compile Include="kbdyndemo\tests.py" />
+    <Compile Include="kbdyndemo\urls.py" />
+    <Compile Include="kbdyndemo\views.py" />
+    <Compile Include="kbdyndemo\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="personalwebsite\__init__.py" />
     <Compile Include="personalwebsite\settings.py" />
@@ -54,10 +62,15 @@
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="kbdyndemo\" />
+    <Folder Include="kbdyndemo\migrations\" />
+    <Folder Include="kbdyndemo\templates\" />
+    <Folder Include="kbdyndemo\templates\kbdyndemo\" />
     <Folder Include="personalwebsite\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="kbdyndemo\templates\kbdyndemo\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
