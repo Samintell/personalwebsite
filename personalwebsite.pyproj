@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="kbdyndemo\templates\kbdyndemo\index.html" />
+    <Content Include="kbdyndemo\templates\kbdyndemo\input.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

@@ -27,5 +27,5 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    path('kbdyn', include('kbdyndemo.urls'))
+    path('kbdyn/', include('kbdyndemo.urls'))
 ]
