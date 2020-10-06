@@ -32,6 +32,8 @@
 </head>
 <body>
     <form action="/submitinput">
+        {% csrf_token %}
+        <input type="text" id="userID" value=""/>
         <textarea name="plaintext" rows="10" cols="50" class="track"></textarea>
         <input type="submit" id="submit" value="Submit"/>
         <input type="hidden" id="hiddenData" value="" />
