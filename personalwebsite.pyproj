@@ -69,6 +69,7 @@
     <Folder Include="personalwebsite\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env" />
     <Content Include=".gitignore" />
     <Content Include="kbdyndemo\templates\kbdyndemo\index.html" />
     <Content Include="kbdyndemo\templates\kbdyndemo\input.html" />
