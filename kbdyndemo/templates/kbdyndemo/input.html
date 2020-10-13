@@ -1,42 +1,67 @@
-﻿<!DOCTYPE html>
+﻿{% extends "kbdyndemo/index.html" %}
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script> // TODO: move this into seperate JS
-        var textData = "";
-        $(document).ready(function () {
-            var lastDate = new Date();
-            $(".track").keydown(function (event) {
-                var curDate = new Date();
-                //console.log(event);
-                console.log(event.which);
-                textData += "" + (curDate - lastDate) + ":d" + event.which + "|";
-                lastDate = curDate;
-            });
-            $(".track").keyup(function (event) {
-                var curDate = new Date();
-                //console.log(event);
-                console.log(event.which);
-                textData += "" + (curDate - lastDate) + ":u" + event.which + "|";
-                lastDate = curDate;
-            });
-
-            $("form").submit(function (event) {
-                $("#hiddenData").val(textData);
-            });
+{% block scripts %}
+<script> // TODO: move this into seperate JS
+    var textData = "";
+    $(document).ready(function () {
+        textData = $("#hiddenData").val();
+        var lastDate = new Date();
+        $(".track").keydown(function (event) {
+            var curDate = new Date();
+            //console.log(event);
+            //console.log(event.which);
+            textData += "" + (curDate - lastDate) + ":d" + event.which + "|"; // format "ms:(u/d)keycode|"
+            lastDate = curDate;
         });
-    </script>
-</head>
-<body>
-    <form action="/submitinput">
+        $(".track").keyup(function (event) {
+            var curDate = new Date();
+            //console.log(event);
+            //console.log(event.which);
+            textData += "" + (curDate - lastDate) + ":u" + event.which + "|";
+            lastDate = curDate;
+        });
+
+        $("form").submit(function (event) {
+            if (($('#q1').val() + $('#q2').val() + $('#q3').val()).length < 300) {
+                event.preventDefault();
+                $('#error').val("Not Enough Characters. A minimum of 300 characters is required").show();
+            }
+            $("#hiddenData").val(textData);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <form action="/kbdyn/submitinput/" method="post">
         {% csrf_token %}
-        <input type="text" id="userID" value=""/>
-        <textarea name="plaintext" rows="10" cols="50" class="track"></textarea>
-        <input type="submit" id="submit" value="Submit"/>
-        <input type="hidden" id="hiddenData" value="" />
+        <div class="form-group">
+            <label for="userID">User ID</label>
+            <input type="text" class="form-control" id="userID" aria-describedby="userIDHelp" name="userID" placeholder="Enter a user ID" value=""/>
+            <small id="userIDHelp" class="form-text text-muted">The User ID will only be used to match duplicate responses and for further testing</small>
+        </div>
+        <div class="form-group">
+            <label for="question1">Tell us a story.</label>
+            <textarea name="question1" rows="5" class="form-control track" id="q1"></textarea>
+        </div>
+        <div class="form-group">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Costa_rica_santa_elena_skywalk.jpg/1280px-Costa_rica_santa_elena_skywalk.jpg" />
+            <small>Image taken from Wikimedia under CC BY 1.0</small>
+            <label for="question2">Describe this image.</label>
+            <textarea name="question2" rows="5" class="form-control track" id="q2"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="question3">Type anything else you want here.</label>
+            <textarea name="question3" rows="5" class="form-control track" id="q3"></textarea>
+        </div>
+        <input type="hidden" id="hiddenData" name="hiddenData" value="" />
+        <p>By hitting submit, you agree that you are over 13, and you agree to let your responses and your keystroke data on this form (time between keystrokes, whether a key was pressed or lifted, and the key pressed) to be collected. </p>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        <p>The form will not submit if you have less than 300 characters.</p>
+        <small>If you have any questions about this survey, contact joshuackarim@gmail.com.</small>
     </form>
-</body>
-</html>
+    <p id="error"></p>
+</div>
+{% endblock %}

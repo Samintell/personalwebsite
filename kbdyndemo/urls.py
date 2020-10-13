@@ -12,5 +12,6 @@ from . import views
 
 urlpatterns = [
     #path('', views.home, name='home'),
-    path('register/', views.register, name='register')
+    path('survey/', views.register, name='survey'),
+    path('submitinput/', views.regsubmit, name='thanks'),
 ]

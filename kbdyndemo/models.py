@@ -8,4 +8,4 @@ class UserInput(models.Model):
     dateOfData = models.DateTimeField()
 
     def __str__(self):
-        return self.userID + ":" + self.dateOfData + ':' + self.typingData
+        return self.userID + ":" + self.dateOfData.__str__() + ':' + self.typingData
