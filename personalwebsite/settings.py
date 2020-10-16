@@ -34,6 +34,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'josh')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'alsojosh')
 ALLOWED_HOSTS = ['localhost', 'jck-personal-web.herokuapp.com', 'www.joshuackarim.me']
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
@@ -129,5 +132,6 @@ MEDIA_URL = '/media/'
 # This should already be in your settings.py
 django_heroku.settings(locals())
 
-options = DATABASES['default'].get('OPTIONS', {})
-options.pop('sslmode', None)
+if DEBUG:
+    options = DATABASES['default'].get('OPTIONS', {})
+    options.pop('sslmode', None)
