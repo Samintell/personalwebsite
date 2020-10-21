@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '9232fb62-1154-4953-9471-4293f9
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'josh')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'alsojosh')
-ALLOWED_HOSTS = ['localhost', 'jck-personal-web.herokuapp.com', 'www.joshuackarim.me']
+ALLOWED_HOSTS = ['localhost', 'jck-personal-web.herokuapp.com', 'www.joshuackarim.me', 'joshuackarim.me']
 SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
