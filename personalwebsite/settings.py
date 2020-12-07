@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     # Add your apps here to enable them
     'kbdyndemo',
     'personalwebsite',
+    'impostor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'whitenoise.runserver_nostatic'
 ]
 
@@ -123,15 +125,17 @@ USE_TZ = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'app/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'app/static'), os.path.join(BASE_DIR,'personalwebsite/static')]
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-# This should already be in your settings.py
+# Django Addons
 django_heroku.settings(locals())
 
 if DEBUG:
     options = DATABASES['default'].get('OPTIONS', {})
     options.pop('sslmode', None)
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

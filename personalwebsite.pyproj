@@ -6,6 +6,7 @@
     <RootNamespace>personalwebsite</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>Pytest</TestFramework>
+    <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,6 +39,17 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="impostor\admin.py" />
+    <Compile Include="impostor\apps.py" />
+    <Compile Include="impostor\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="impostor\migrations\__init__.py" />
+    <Compile Include="impostor\models.py" />
+    <Compile Include="impostor\tests.py" />
+    <Compile Include="impostor\urls.py" />
+    <Compile Include="impostor\views.py" />
+    <Compile Include="impostor\__init__.py" />
     <Compile Include="kbdyndemo\admin.py" />
     <Compile Include="kbdyndemo\apps.py" />
     <Compile Include="kbdyndemo\migrations\__init__.py" />
@@ -47,6 +59,7 @@
     <Compile Include="kbdyndemo\views.py" />
     <Compile Include="kbdyndemo\__init__.py" />
     <Compile Include="manage.py" />
+    <Compile Include="personalwebsite\siteviews.py" />
     <Compile Include="personalwebsite\__init__.py" />
     <Compile Include="personalwebsite\settings.py" />
     <Compile Include="personalwebsite\urls.py" />
@@ -62,19 +75,28 @@
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="impostor\" />
+    <Folder Include="impostor\migrations\" />
+    <Folder Include="impostor\templates\" />
+    <Folder Include="impostor\templates\impostor\" />
     <Folder Include="kbdyndemo\" />
     <Folder Include="kbdyndemo\migrations\" />
     <Folder Include="kbdyndemo\templates\" />
     <Folder Include="kbdyndemo\templates\kbdyndemo\" />
     <Folder Include="personalwebsite\" />
+    <Folder Include="personalwebsite\static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />
     <Content Include=".gitignore" />
+    <Content Include="impostor\templates\impostor\layout.html" />
+    <Content Include="impostor\templates\impostor\register.html" />
     <Content Include="kbdyndemo\templates\kbdyndemo\index.html" />
     <Content Include="kbdyndemo\templates\kbdyndemo\input.html" />
     <Content Include="kbdyndemo\templates\kbdyndemo\thanks.html" />
+    <Content Include="personalwebsite\static\keytrack.js" />
     <Content Include="Procfile" />
+    <Content Include="README.md" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -105,11 +127,6 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.html">
-      <SubType>WebBrowser</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
