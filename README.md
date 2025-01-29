@@ -1,4 +1,4 @@
-# Josh's Personal Website
+# Josh's Personal Website (OUTDATED)
 
 This repo is the code for my website, at joshuackarim.me
 
